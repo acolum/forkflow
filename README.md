@@ -14,8 +14,8 @@ fit a model across the whole grid, and summarise the distribution of estimates
 instead of reporting a single analytic pathway.
 
 `forkflow` is the engine behind the book
-*Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*, and my useR! 2026
-talk and its examples are drawn from that project.
+*Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*, and [my useR! 2026
+talk](https://acolum.github.io/forkflow/slides.pdf) and its examples are drawn from that project.
 
 ## Documentation
 
