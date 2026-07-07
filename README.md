@@ -15,7 +15,7 @@ instead of reporting a single analytic pathway.
 
 `forkflow` is the engine behind the book
 *Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*, and [my useR! 2026
-talk](https://acolum.github.io/forkflow/slides.pdf) and its examples are drawn from that project.
+talk](https://github.com/acolum/forkflow/slides.pdf) and its examples are drawn from that project.
 
 ## Documentation
 
