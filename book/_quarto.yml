@@ -26,5 +26,4 @@ format:
   html:
     theme: cosmo
     code-link: true
-  pdf:
-    documentclass: scrbook
+
