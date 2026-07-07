@@ -1,9 +1,24 @@
 # Reproducible Reporting
 
-A multiverse is trustworthy only if others can rerun it. Pair `forkflow` with
-`targets` to rerun only the specifications that changed, `renv` to pin package
-versions, Quarto to weave code and prose, and a fixed seed for exact imputation
-and resampling. `report_multiverse()` writes shareable figures and a summary
-table.
+A multiverse earns trust only when someone else can rerun it and land on the same distribution. The fifth verb writes shareable artifacts, and a few surrounding tools make the whole pipeline reproducible.
 
-*(Full chapter in preparation.)*
+## The reporting helper
+
+`report_multiverse()` computes the vibration summary, saves a specification curve and a volcano, and writes the summary table to disk.
+
+```r
+report_multiverse(results, dir = "outputs")
+```
+
+## A durable pipeline
+
+Four tools keep a multiverse rerunnable over time:
+
+- **`targets`** builds a dependency graph and reruns only the specifications that changed, which matters when a grid takes hours.
+- **`renv`** pins package versions so the same grid fits the same way next year.
+- **Quarto** weaves code, figures, and prose into one shareable report.
+- **`set.seed()`** fixes imputation and resampling so results reproduce exactly.
+
+## Pre-specifying the grid
+
+The strongest guard against a garden of forking paths is to write the decision space down before seeing outcomes and to register it. A pre-specified grid turns analytic flexibility from a hidden liberty into a declared, auditable object, which is the disposition this workflow is built to support.

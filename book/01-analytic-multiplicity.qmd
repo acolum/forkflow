@@ -1,20 +1,15 @@
 # The Problem of Analytic Multiplicity
 
-A single analysis reports one number. Yet model form, covariate sets,
-transformations, and missing-data rules are all defensible choices, and each
-reasonable path can land on a different estimate. The spread across those paths
-is a property of the decision space, and characterising it is the aim of this
-book.
+A published result usually reports one estimate from one analysis. Behind that single number sits a branching set of decisions: how the outcome and exposure were coded, which covariates entered the model, how missing values were handled, which observations met inclusion criteria, and what functional form linked predictors to outcome. Each decision has several defensible answers, and different combinations can yield different estimates. The distribution of results across all defensible analyses is a property of the study, and describing it is the aim of this book.
 
 ## Same data, different answers
 
-When many expert teams analyse one dataset, their estimates disperse even under
-identical questions and data [@silberzahn2018; @breznau2022]. In observational
-epidemiology, the vibration-of-effects framework showed that swapping adjustment
-sets moves both the effect size and its p-value across a wide range
-[@patel2015; @klau2021].
+When many independent teams analyse the same data to answer the same question, their estimates spread out. In a coordinated study of whether football referees give more red cards to darker-skinned players, twenty-nine teams reached conclusions ranging from no association to a strong one, all from a single dataset [@silberzahn2018]. A later effort on immigration and preferences for social policy found comparable dispersion across seventy-three teams [@breznau2022]. The variation came from analytic choices, each one reasonable on its own.
 
-## What follows
+Observational epidemiology faces the same exposure. The vibration-of-effects framework fit thousands of models that differed only in their adjustment sets and showed that both the effect size and its p-value can swing widely across those models, sometimes reversing sign [@patel2015]. Applying the framework to established cohorts confirmed that many reported associations are fragile to defensible changes in specification [@klau2021].
 
-The rest of the book makes the decision space visible and reproducible in R, so
-that robustness can be assessed rather than assumed.
+## The response
+
+Two complementary methods make the decision space visible. Multiverse analysis enumerates the defensible specifications and reports the full set of estimates [@steegen2016]. Vibration-of-effects analysis turns that lens on one target association and quantifies how much it moves as the model changes [@patel2015]. Specification-curve analysis orders the estimates and tests them as a set [@simonsohn2020].
+
+This book implements those methods in R through the companion package `forkflow`. The workflow is five verbs: enumerate the specifications, fit a model across the whole grid, summarise the resulting distribution, visualise it, and report it reproducibly. The chapters that follow build each verb in turn, close with a worked survival-analysis example, and end with practical guidance.

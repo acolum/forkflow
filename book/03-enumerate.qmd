@@ -1,7 +1,10 @@
 # Enumerating the Decision Space
 
-`forkflow::spec_grid()` takes the Cartesian product of named choices, and
-`adjuster_sets()` returns every subset of a covariate pool.
+The first verb turns analytic choices into data. Each row of a specification grid is one complete, defensible analysis, and every column records one decision.
+
+## A grid of choices
+
+`spec_grid()` takes named choices and returns their Cartesian product, one row per combination, with a `.spec_id` key.
 
 ```r
 library(forkflow)
@@ -11,9 +14,20 @@ spec_grid(
   transform  = c("identity", "log"),
   missing    = c("complete", "impute")
 )
+```
 
+Adding a choice is one more argument, and the grid grows on its own.
+
+## Adjustment sets
+
+A common epidemiological multiverse varies which covariates adjust a target association. `adjuster_sets()` returns every subset of a covariate pool, from the empty set to the full set.
+
+```r
 adjuster_sets(c("age", "sex", "bmi"))
 ```
 
-Each row is one complete, defensible specification. Adding a choice is one more
-argument, and the grid grows on its own.
+The result carries a list column of covariate names and an `n_adjusters` count, so later steps can fit each set and can colour figures by model size. A pool of seven covariates yields two to the seventh power, or one hundred twenty-eight, adjustment sets.
+
+## Bounding a large grid
+
+When the pool is large, the full power set becomes unwieldy. The `min_size` and `max_size` arguments bound the subset size, and for grids too large to enumerate in full, a random sample of specifications gives an unbiased picture of the distribution. Chapter 9 discusses when sampling is appropriate.

@@ -1,10 +1,23 @@
 # Practical Guidance and Limits
 
-Four cautions. Not every fork is equal: weight or gate specifications by
-defensibility, since a wide multiverse of weak models misleads. Pre-specify the
-decision space before seeing outcomes, and register it. Budget the compute:
-prune redundant specifications, cache shared steps, and sample the grid when it
-is enormous. Interpret the distribution as a robustness check, and read it as a
-range across specifications.
+A multiverse is a tool for honest robustness reporting, and like any tool it can be misused. Four cautions keep it sound.
 
-*(Full chapter in preparation.)*
+## Weight forks by defensibility
+
+Specifications differ in standing. A causal diagram can mark which covariates are confounders, which are colliders to avoid, and which are irrelevant, so the adjustment sets that respect it carry more weight than the rest. A wide multiverse of weak or implausible models can bury a sound estimate under noise, so curate the grid before enumerating it.
+
+## Pre-specify and register
+
+Choosing the grid after seeing results reopens the garden of forking paths one level up [@gelman2013]. Writing the decision space down in advance, and registering it, keeps the multiverse a test of robustness rather than a search for a preferred answer.
+
+## Budget the compute
+
+Large grids cost time. Prune redundant specifications, cache steps that specifications share, and when the space is enormous fit a random sample, which estimates the distribution without enumerating every point. The `targets` package avoids rerunning fits that have not changed.
+
+## Interpret as robustness
+
+A specification curve is a description of stability, and reading it as a menu for the most significant result would defeat its purpose. Report the whole distribution, name the choices that move the estimate, and mark which specifications are principled. Two limits remain worth stating: a multiverse is only as trustworthy as the specifications included, and the choice of the grid is itself a researcher degree of freedom. Naming those limits is part of reporting the analysis well.
+
+## Further reading
+
+The methods here draw on multiverse analysis [@steegen2016], specification-curve analysis [@simonsohn2020], and the vibration-of-effects framework [@patel2015; @klau2021], with the underlying concern set out by @simmons2011 and @gelman2013.

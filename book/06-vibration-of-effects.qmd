@@ -1,14 +1,27 @@
 # Vibration of Effects
 
-Vibration of effects makes the adjustment-set choice the focus. `voe()`
-summarises the distribution, and `voe_volcano()` plots the exponentiated effect
-against `-log10(p)` for every model [@patel2015].
+Vibration-of-effects analysis makes one target association the focus and asks how much it moves as the adjustment set changes [@patel2015].
+
+## The summary
+
+`voe()` reduces the per-specification estimates to a compact summary: the median effect, the first and ninety-ninth percentiles, the relative ratio, the Janus fraction, and the proportion of specifications that reach significance.
 
 ```r
 voe(results)
+```
+
+The relative ratio is the ninety-ninth percentile of the exponentiated effect divided by the first percentile, so for a hazard or odds ratio it reports how many fold the association ranges across models. The Janus fraction is the share of estimates above zero; a value near zero or one means the sign is stable, and a value near one half means the association changes direction across defensible models.
+
+## The volcano
+
+`voe_volcano()` plots the exponentiated effect against the negative base-ten logarithm of the p-value for every specification, with a dashed line at no effect and colour mapped to the number of adjusters.
+
+```r
 voe_volcano(results, colour = n_adjusters)
 ```
 
-The relative ratio (99th over 1st percentile of the exponentiated effect)
-quantifies the vibration in one number, and the Janus fraction flags a sign that
-flips across defensible models.
+The cloud shows the joint spread of effect size and significance. A colour gradient that separates left from right reveals that model size itself moves the association, a common and instructive pattern.
+
+## At scale
+
+For phenome-wide or exposome-wide work with very many exposures, the `quantvoe` package computes vibration summaries across thousands of associations, extending the logic used here to a screening setting.

@@ -1,14 +1,34 @@
 # Fitting the Multiverse
 
-`fit_multiverse()` applies a fitting function to every row of the grid and
-returns a tidy table, one row per specification. Because the fits are
-independent, `.parallel = TRUE` spreads them across cores with `furrr`.
+The second verb runs a model on every specification. `fit_multiverse()` applies a fitting function to each row of the grid and returns a tidy table with one row per model term per specification.
+
+## The fitting function
+
+The function receives one specification as a one-row tibble and returns a tibble, usually from `broom::tidy()`. For the output of `adjuster_sets()`, the covariate vector sits in the `adjusters` list column.
 
 ```r
 results <- fit_multiverse(specs, function(spec) {
   f <- reformulate(c("exposure", spec$adjusters[[1]]), "outcome")
-  broom::tidy(lm(f, data = df), conf.int = TRUE)
-}, .parallel = TRUE)
+  broom::tidy(lm(f, data = df), conf.int = TRUE) |>
+    dplyr::filter(term == "exposure")
+})
 ```
 
-*(Efficiency notes on caching and design-matrix reuse in preparation.)*
+Keeping only the target term leaves one estimate per specification, which is what the summaries and plots expect.
+
+## Parallel fits
+
+The fits are independent, so they parallelise cleanly. Set a plan once and pass `.parallel = TRUE`.
+
+```r
+library(furrr)
+plan(multisession)
+
+results <- fit_multiverse(specs, fit_one, .parallel = TRUE, .seed = 2026)
+```
+
+The `.seed` argument makes parallel imputation and resampling reproducible.
+
+## Efficiency
+
+Two habits keep large multiverses tractable. First, prepare the data once, outside the fitting function, so shared cleaning is not repeated for every specification. Second, reuse work that specifications hold in common, such as a design matrix or a single imputation, rather than recomputing it each time. When the grid still runs long, prune redundant specifications or fit a random sample, as Chapter 9 describes.

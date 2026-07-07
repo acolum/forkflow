@@ -1,10 +1,22 @@
 # Researcher Degrees of Freedom
 
-The analytic choices live in a few recurring families: model specification,
-covariate and confounder selection, variable transformations, missing-data
-handling, exposure and outcome coding, and sample construction. Each choice is
-defensible on its own; the trouble is combinatorial, since independent choices
-multiply. Six binary choices already give 64 analyses, and realistic studies
-reach thousands.
+The choices that generate a multiverse are the researcher degrees of freedom: the many defensible ways to move from raw data to a reported estimate [@simmons2011]. They are seldom recorded, and when they are made after seeing the data, even careful analysts can walk a garden of forking paths toward a preferred result without any deliberate fishing [@gelman2013].
 
-*(Full chapter in preparation.)*
+## Where the choices live
+
+Most degrees of freedom fall into a few families:
+
+- **Model specification.** Functional form, link function, interactions, and random-effect structure.
+- **Covariate and confounder selection.** Which variables adjust the target association.
+- **Transformations.** Scaling, logarithms, spline terms, and categorisation cut-points.
+- **Missing-data handling.** Complete cases, single imputation, or multiple imputation.
+- **Exposure and outcome coding.** Thresholds, composites, and event definitions.
+- **Sample construction.** Inclusion criteria, outlier rules, and eligibility windows.
+
+## The combinatorics
+
+Choices multiply. Six independent binary decisions already give two to the sixth power, or sixty-four, analyses. A study that varies a handful of covariates, two coding rules, and a missing-data strategy reaches the thousands. Enumerating that space by hand is impractical, which is why the workflow programs it.
+
+## Principled and arbitrary forks
+
+Forks differ in standing. Some reflect substantive knowledge, such as a covariate that a causal diagram marks as a confounder. Others are arbitrary, such as an outlier cut-off chosen for convenience. A useful multiverse separates the two: it gives weight to specifications a domain expert would accept and treats the arbitrary ones as sensitivity checks rather than competing answers. Chapter 9 returns to this distinction. For now the task is to write the decision space down, which the next chapter does with two functions.

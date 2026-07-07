@@ -1,11 +1,21 @@
 # Specification Curves
 
-`spec_curve()` sorts every estimate and shows its confidence interval, coloured
-by whether the interval excludes zero, so robustness is legible at a glance
-[@simonsohn2020].
+The third and fourth verbs summarise and visualise the distribution of estimates. A specification curve is the natural first picture.
+
+## Reading the curve
+
+`spec_curve()` sorts the estimates from smallest to largest, draws each with its confidence interval, and colours points by whether the interval excludes zero.
 
 ```r
 spec_curve(results)
 ```
 
-*(Full chapter in preparation.)*
+Three features carry most of the message: where the mass of estimates sits, how wide it spreads, and what share crosses the null. A curve that stays on one side of zero signals a finding robust to the choices in the grid. A curve that straddles zero, with many intervals covering it, signals an association that depends on specification.
+
+## Ordering and annotation
+
+Sorting by the estimate makes central tendency and spread legible at a glance. An analyst can also sort by a specific choice to see whether one decision drives the pattern, for example whether the largest estimates share a particular adjustment set. The companion volcano in the next chapter makes that dependence explicit by colouring on model size.
+
+## Inference across specifications
+
+The curve describes a distribution, and it can also support a test. Simonsohn, Simmons, and Nelson propose resampling under the null to ask whether the observed curve is more extreme than chance would produce [@simonsohn2020]. That inferential layer sits on top of the descriptive curve and is a reasonable extension once the descriptive picture is in hand.

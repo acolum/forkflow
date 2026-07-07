@@ -1,8 +1,8 @@
 # Case Study: Colon Cancer Survival
 
-This chapter runs the whole pipeline on the `colon` trial that ships with the
-`survival` package, so it needs no download. The exposure of interest is
-`node4` (more than four positive lymph nodes) on the death endpoint.
+This chapter runs the whole pipeline on the `colon` trial that ships with the `survival` package, so it needs no download. The trial randomised patients with stage III colon cancer to adjuvant therapy, and the data record survival and recurrence. The exposure of interest here is `node4`, an indicator of more than four positive lymph nodes, and the endpoint is death.
+
+## Setup and cohort
 
 ```r
 library(forkflow)
@@ -12,7 +12,13 @@ library(furrr)
 plan(multisession)
 
 d <- colon |> dplyr::filter(etype == 2) |> tidyr::drop_na()
+```
 
+Filtering to `etype == 2` keeps the death endpoint, and dropping incomplete rows ensures every specification sees the same cohort.
+
+## The multiverse
+
+```r
 specs <- adjuster_sets(
   c("age", "sex", "obstruct", "perfor", "adhere", "differ", "surg")
 )
@@ -22,14 +28,20 @@ results <- fit_multiverse(specs, function(spec) {
   coxph(f, data = d) |> tidy(conf.int = TRUE) |>
     dplyr::filter(term == "node4")
 }, .parallel = TRUE, .seed = 2026)
+```
 
+The seven candidate adjusters give one hundred twenty-eight Cox models, each estimating the hazard ratio for `node4` under a different adjustment set.
+
+## Reading the results
+
+```r
 voe(results)
 spec_curve(results)
 voe_volcano(results, colour = n_adjusters)
-report_multiverse(results, dir = "outputs")
 ```
 
-Reading the outputs: the specification curve shows where the mass of estimates
-sits and how much crosses the null; the volcano shows how the hazard ratio for
-`node4` vibrates as covariates enter and leave; and `voe()` reduces the spread
-to a relative hazard ratio and a Janus fraction.
+The specification curve shows where the log hazard ratios concentrate and how much of the distribution crosses the null. The volcano shows how the hazard ratio for `node4` vibrates as covariates enter and leave, with colour revealing whether more heavily adjusted models pull the estimate in one direction. The `voe()` summary reduces the spread to a relative hazard ratio and a Janus fraction, which together report how stable the association is.
+
+## A note on defensibility
+
+Every adjuster in the pool is a plausible prognostic factor in colon cancer, so the grid reads as a reasonable sensitivity analysis rather than a fishing expedition. In a confirmatory study the pool would be fixed in advance from a causal diagram, a point the next chapter develops.
