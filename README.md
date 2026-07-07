@@ -14,7 +14,7 @@ fit a model across the whole grid, and summarise the distribution of estimates
 instead of reporting a single analytic pathway.
 
 `forkflow` is the engine behind the book
-*Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*, and this
+*Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*, and my useR! 2026
 talk and its examples are drawn from that project.
 
 ## Documentation
@@ -68,7 +68,7 @@ spec_curve(results)   # the distribution, ranked
 voe_volcano(results, colour = n_adjusters)
 ```
 
-## Method background
+## Methodological background
 
 - Steegen, Tuerlinckx, Gelman and Vanpaemel (2016). Increasing transparency
   through a multiverse analysis. *Perspectives on Psychological Science*.
@@ -93,8 +93,7 @@ not affect installation.
 
 ## Contributing
 
-Contributions are welcome. `forkflow` follows tidyverse conventions and aims for
-review by rOpenSci and the Journal of Open Source Software. Please open an issue
+Contributions are welcome. `forkflow` follows tidyverse conventions. Please open an issue
 before a large pull request.
 
 ## Citation
