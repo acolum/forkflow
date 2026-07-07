@@ -81,7 +81,7 @@ voe_volcano(results, colour = n_adjusters)
 ## Companion book
 
 This repository also contains a Quarto book of tutorials in `book/`,
-*Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*. Render it
+*Analytic Multiplicity in Epidemiology: A Reproducible Workflow in R*. You can render it
 with:
 
 ```bash
