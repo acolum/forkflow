@@ -88,9 +88,6 @@ with:
 quarto render book
 ```
 
-The book is excluded from the package build (see `.Rbuildignore`), so it does
-not affect installation.
-
 ## Contributing
 
 Contributions are welcome. `forkflow` follows tidyverse conventions. Please open an issue
