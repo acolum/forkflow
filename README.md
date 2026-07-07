@@ -22,6 +22,17 @@ talk and its examples are drawn from that project.
 - Package reference site: <https://acolum.github.io/forkflow/>
 - Companion book: <https://acolum.github.io/forkflow/book/>
 
+Both are built and published automatically by the `pkgdown` GitHub Action on
+every push to `main`, using GitHub's Actions deployment method (no `gh-pages`
+branch required). Enable it once:
+
+1. **Settings -> Actions -> General -> Workflow permissions**: select
+   **Read and write permissions**.
+2. **Settings -> Pages -> Build and deployment -> Source**: choose
+   **GitHub Actions**.
+3. Push to `main`, or run the workflow manually from the **Actions** tab
+   (**pkgdown -> Run workflow**). The URLs go live after the first green run.
+
 ## Installation
 
 ```r
