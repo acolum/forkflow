@@ -6,7 +6,7 @@ book:
   subtitle: "A Reproducible Workflow in R"
   author: "Alyssa Columbus"
   date: today
-  repo-url: https://github.com/acolum/forkflow-book
+  repo-url: https://github.com/acolum/forkflow
   chapters:
     - index.qmd
     - 01-analytic-multiplicity.qmd
