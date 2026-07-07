@@ -22,12 +22,6 @@ talk and its examples are drawn from that project.
 - Package reference site: <https://acolum.github.io/forkflow/>
 - Companion book: <https://acolum.github.io/forkflow/book/>
 
-Both are built and published automatically by the `pkgdown` GitHub Action on
-every push to `main`. The first time, enable it once under
-**Settings -> Pages -> Build and deployment -> Source: Deploy from a branch**,
-and choose the `gh-pages` branch with the `/ (root)` folder. The site links
-appear after the first successful run.
-
 ## Installation
 
 ```r
