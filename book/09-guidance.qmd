@@ -1,0 +1,10 @@
+# Practical Guidance and Limits
+
+Four cautions. Not every fork is equal: weight or gate specifications by
+defensibility, since a wide multiverse of weak models misleads. Pre-specify the
+decision space before seeing outcomes, and register it. Budget the compute:
+prune redundant specifications, cache shared steps, and sample the grid when it
+is enormous. Interpret the distribution as a robustness check, and read it as a
+range across specifications.
+
+*(Full chapter in preparation.)*

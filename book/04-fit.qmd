@@ -1,0 +1,14 @@
+# Fitting the Multiverse
+
+`fit_multiverse()` applies a fitting function to every row of the grid and
+returns a tidy table, one row per specification. Because the fits are
+independent, `.parallel = TRUE` spreads them across cores with `furrr`.
+
+```r
+results <- fit_multiverse(specs, function(spec) {
+  f <- reformulate(c("exposure", spec$adjusters[[1]]), "outcome")
+  broom::tidy(lm(f, data = df), conf.int = TRUE)
+}, .parallel = TRUE)
+```
+
+*(Efficiency notes on caching and design-matrix reuse in preparation.)*

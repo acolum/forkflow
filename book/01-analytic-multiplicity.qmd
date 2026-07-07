@@ -1,0 +1,20 @@
+# The Problem of Analytic Multiplicity
+
+A single analysis reports one number. Yet model form, covariate sets,
+transformations, and missing-data rules are all defensible choices, and each
+reasonable path can land on a different estimate. The spread across those paths
+is a property of the decision space, and characterising it is the aim of this
+book.
+
+## Same data, different answers
+
+When many expert teams analyse one dataset, their estimates disperse even under
+identical questions and data [@silberzahn2018; @breznau2022]. In observational
+epidemiology, the vibration-of-effects framework showed that swapping adjustment
+sets moves both the effect size and its p-value across a wide range
+[@patel2015; @klau2021].
+
+## What follows
+
+The rest of the book makes the decision space visible and reproducible in R, so
+that robustness can be assessed rather than assumed.

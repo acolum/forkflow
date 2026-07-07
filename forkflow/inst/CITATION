@@ -1,0 +1,10 @@
+citHeader("To cite forkflow in publications, please use:")
+
+bibentry(
+  bibtype  = "Manual",
+  title    = "forkflow: A Reproducible Workflow for Multiverse and Vibration-of-Effects Analyses",
+  author   = person("Alyssa", "Columbus"),
+  year     = "2026",
+  note     = "R package version 0.1.0",
+  url      = "https://github.com/acolum/forkflow"
+)

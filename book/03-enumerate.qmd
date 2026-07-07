@@ -1,0 +1,19 @@
+# Enumerating the Decision Space
+
+`forkflow::spec_grid()` takes the Cartesian product of named choices, and
+`adjuster_sets()` returns every subset of a covariate pool.
+
+```r
+library(forkflow)
+
+spec_grid(
+  adjust_age = c(TRUE, FALSE),
+  transform  = c("identity", "log"),
+  missing    = c("complete", "impute")
+)
+
+adjuster_sets(c("age", "sex", "bmi"))
+```
+
+Each row is one complete, defensible specification. Adding a choice is one more
+argument, and the grid grows on its own.

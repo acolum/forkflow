@@ -1,0 +1,9 @@
+# Reproducible Reporting
+
+A multiverse is trustworthy only if others can rerun it. Pair `forkflow` with
+`targets` to rerun only the specifications that changed, `renv` to pin package
+versions, Quarto to weave code and prose, and a fixed seed for exact imputation
+and resampling. `report_multiverse()` writes shareable figures and a summary
+table.
+
+*(Full chapter in preparation.)*

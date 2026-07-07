@@ -1,0 +1,14 @@
+# Vibration of Effects
+
+Vibration of effects makes the adjustment-set choice the focus. `voe()`
+summarises the distribution, and `voe_volcano()` plots the exponentiated effect
+against `-log10(p)` for every model [@patel2015].
+
+```r
+voe(results)
+voe_volcano(results, colour = n_adjusters)
+```
+
+The relative ratio (99th over 1st percentile of the exponentiated effect)
+quantifies the vibration in one number, and the Janus fraction flags a sign that
+flips across defensible models.

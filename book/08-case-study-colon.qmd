@@ -1,0 +1,35 @@
+# Case Study: Colon Cancer Survival
+
+This chapter runs the whole pipeline on the `colon` trial that ships with the
+`survival` package, so it needs no download. The exposure of interest is
+`node4` (more than four positive lymph nodes) on the death endpoint.
+
+```r
+library(forkflow)
+library(survival)
+library(broom)
+library(furrr)
+plan(multisession)
+
+d <- colon |> dplyr::filter(etype == 2) |> tidyr::drop_na()
+
+specs <- adjuster_sets(
+  c("age", "sex", "obstruct", "perfor", "adhere", "differ", "surg")
+)
+
+results <- fit_multiverse(specs, function(spec) {
+  f <- reformulate(c("node4", spec$adjusters[[1]]), "Surv(time, status)")
+  coxph(f, data = d) |> tidy(conf.int = TRUE) |>
+    dplyr::filter(term == "node4")
+}, .parallel = TRUE, .seed = 2026)
+
+voe(results)
+spec_curve(results)
+voe_volcano(results, colour = n_adjusters)
+report_multiverse(results, dir = "outputs")
+```
+
+Reading the outputs: the specification curve shows where the mass of estimates
+sits and how much crosses the null; the volcano shows how the hazard ratio for
+`node4` vibrates as covariates enter and leave; and `voe()` reduces the spread
+to a relative hazard ratio and a Janus fraction.

@@ -1,0 +1,30 @@
+project:
+  type: book
+
+book:
+  title: "Analytic Multiplicity in Epidemiology"
+  subtitle: "A Reproducible Workflow in R"
+  author: "Alyssa Columbus"
+  date: today
+  repo-url: https://github.com/acolum/forkflow-book
+  chapters:
+    - index.qmd
+    - 01-analytic-multiplicity.qmd
+    - 02-degrees-of-freedom.qmd
+    - 03-enumerate.qmd
+    - 04-fit.qmd
+    - 05-specification-curves.qmd
+    - 06-vibration-of-effects.qmd
+    - 07-reproducible-reporting.qmd
+    - 08-case-study-colon.qmd
+    - 09-guidance.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    code-link: true
+  pdf:
+    documentclass: scrbook

@@ -1,0 +1,34 @@
+# Preface {.unnumbered}
+
+Empirical data analysis involves a large number of defensible analytic choices:
+model form, covariate selection, transformations, and approaches to missing
+data. These decisions can meaningfully influence statistical results, yet they
+are rarely explored or reported systematically. This book presents a
+reproducible, R-based workflow for examining that analytic multiplicity using
+multiverse analyses and vibration-of-effects frameworks.
+
+The workflow is implemented in the companion R package
+[`forkflow`](https://github.com/acolum/forkflow). Using R, analysts can
+enumerate plausible analytic specifications, run large sets of models
+programmatically, and summarise the resulting distribution of estimates rather
+than relying on a single analytic pathway. Examples come from applied
+epidemiology and public health, where alternative analytic choices can produce
+substantially different effect estimates even when each specification is
+methodologically defensible.
+
+The useR! 2026 talk *Managing Analytic Multiplicity in Epidemiology* is an
+excerpt from this book, drawing chiefly on Chapters 1, 6, and 8.
+
+## How to read this book
+
+The early chapters motivate the problem and locate the analytic choices. The
+middle chapters build the workflow one verb at a time: enumerate, fit,
+summarise, visualise, report. The case study runs the whole pipeline on a public
+dataset, and the closing chapter covers practical guidance and limits.
+
+## Setup
+
+```r
+pak::pak("acolum/forkflow")
+library(forkflow)
+```

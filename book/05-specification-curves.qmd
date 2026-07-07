@@ -1,0 +1,11 @@
+# Specification Curves
+
+`spec_curve()` sorts every estimate and shows its confidence interval, coloured
+by whether the interval excludes zero, so robustness is legible at a glance
+[@simonsohn2020].
+
+```r
+spec_curve(results)
+```
+
+*(Full chapter in preparation.)*

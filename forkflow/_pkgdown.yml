@@ -1,0 +1,14 @@
+url: https://acolum.github.io/forkflow
+
+template:
+  bootstrap: 5
+
+reference:
+  - title: Enumerate the decision space
+    contents: [spec_grid, adjuster_sets]
+  - title: Fit the multiverse
+    contents: [fit_multiverse]
+  - title: Summarise and visualise
+    contents: [voe, spec_curve, voe_volcano]
+  - title: Report
+    contents: [report_multiverse]

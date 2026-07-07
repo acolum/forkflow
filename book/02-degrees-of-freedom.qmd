@@ -1,0 +1,10 @@
+# Researcher Degrees of Freedom
+
+The analytic choices live in a few recurring families: model specification,
+covariate and confounder selection, variable transformations, missing-data
+handling, exposure and outcome coding, and sample construction. Each choice is
+defensible on its own; the trouble is combinatorial, since independent choices
+multiply. Six binary choices already give 64 analyses, and realistic studies
+reach thousands.
+
+*(Full chapter in preparation.)*
